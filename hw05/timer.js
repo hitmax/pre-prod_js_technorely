@@ -2,7 +2,6 @@ class Timer {
     constructor(initialTime) {
         this.initialTime = initialTime;
         this.timerId = null;
-        this.additionalTime = 0;
         this.remainsTime = 0;
         this.timeHelper = initialTime;
         this.startTimerMoment = 0;
@@ -34,8 +33,7 @@ class Timer {
         }
         clearTimeout(this.timerId);
         this.editTimerMoment = Date.now();
-        let additionalTime = time;
-        this.remainsTime = this.remainsTime + this.timeHelper - (this.editTimerMoment - this.startTimerMoment) + additionalTime;
+        this.remainsTime = this.remainsTime + this.timeHelper - (this.editTimerMoment - this.startTimerMoment) + time;
         this.timeHelper = 0;
         console.log(this.remainsTime);
         this.timerId = setTimeout(this.timeOver, this.remainsTime);
