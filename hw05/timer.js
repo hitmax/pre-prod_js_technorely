@@ -9,7 +9,9 @@ class Timer {
     }
 
     start() {
-        console.log(new Date());
+        let date = new Date();
+        console.log(`start at ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`);
+
         this.timerId = setTimeout(this.timeOver, this.initialTime);
         this.startTimerMoment = Date.now();
     }
@@ -35,7 +37,7 @@ class Timer {
         this.editTimerMoment = Date.now();
         this.remainsTime = this.remainsTime + this.timeHelper - (this.editTimerMoment - this.startTimerMoment) + time;
         this.timeHelper = 0;
-        console.log(this.remainsTime);
+        console.log(`change at ${time}ms, ${this.remainsTime} ms left`);
         this.timerId = setTimeout(this.timeOver, this.remainsTime);
         this.startTimerMoment = Date.now();
     }
@@ -45,7 +47,8 @@ class Timer {
     }
 
     timeOver() {
-        console.log("time over " + new Date());
+        let date = new Date();
+        console.log(`stop at ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`)
     }
 }
 
